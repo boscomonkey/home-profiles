@@ -115,6 +115,7 @@ then
     source ~/perl5/perlbrew/etc/bashrc
 fi
 
+# switch prompts to show Python virtualenv
 py() {
     # Default virtual env, change as needed (dependency on virtualenvwrapper)
     # workon devenv
@@ -122,6 +123,13 @@ py() {
     source ~/home-profiles/pyutils.sh
 }
 
+# activate a particular virtualenv. For example: pyactivate learn_python
+pyactivate ()
+{
+    source ~/.virtualenvs/$1/bin/activate
+}
+
+# switch prompts to show Ruby rvm
 rb() {
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
@@ -138,10 +146,10 @@ rb() {
 }
 
 # CONTROL DEFAULT LANGUAGE, see profile
-if [[ $ILOVEPYTHON ]] ; then
-    py
-else
+if [[ $ILOVERUBY ]] ; then
     rb
+else
+    py
 fi
 
 # Add the following to your ~/.bashrc or ~/.zshrc
@@ -160,4 +168,6 @@ alias unhitch='hitch -u'
 [ -f /usr/local/etc/bash_completion.d/git-completion.bash ] && \
     . /usr/local/etc/bash_completion.d/git-completion.bash
 
+# use ^X to pause screen (instead of default ^S) so that ^S can be
+# used to search forward in BASH history
 stty stop ^X

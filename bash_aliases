@@ -15,6 +15,7 @@ alias git-update='git fetch --tags; git fetch origin; for i in rc master; do git
 alias knife-ssh='knife ssh '\''role:rails3 AND chef_environment:production AND NOT role:maintenance'\'' -a name -c config/chef/knife-prod.rb'
 alias mac2unix='perl -pe '\''s/\r/\n/mg'\'''
 alias path='ruby -e "puts ENV[\"PATH\"].gsub(/:/, \"\n\")"'
+alias pipclean='pip list | tabify | cut -f1 | egrep -v "pip|setuptools|virtualenv|wheel" | xargs pip uninstall --yes'
 alias pretty_json='ruby -r json -e '\''txt = File.read(ARGV[0]); h = JSON.parse(txt); puts JSON.pretty_generate(h)'\'''
 alias psgrep='ps aux | grep -v grep | grep '
 alias tabify='ruby -pe '\''gsub(/ +/, "\t")'\'''
