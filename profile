@@ -15,6 +15,12 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# set PATH to include Android SDK for Mac if it exists
+if [ -d "$HOME/Developer/android-sdk-macosx" ] ; then
+    export ANDROID_HOME="$HOME/Developer/android-sdk-macosx"
+    PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
+fi
+
 # Mac OSX Homebrew rate limiting - get token from github for homebrew
 # to avoid blowing rate limiting on brew searches
 ### export HOMEBREW_GITHUB_API_TOKEN=API_TOKEN
@@ -26,11 +32,11 @@ export LC_CTYPE="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 
 # from Evan: speed up your Rails
-export RUBY_HEAP_MIN_SLOTS=800000
-export RUBY_HEAP_FREE_MIN=100000
-export RUBY_HEAP_SLOTS_INCREMENT=300000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_HEAP_INIT_SLOTS=1250000
 export RUBY_GC_MALLOC_LIMIT=79000000
+export RUBY_HEAP_FREE_MIN=100000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_HEAP_SLOTS_INCREMENT=300000
 
 # read the .ackrc at each directory level instead of just ~
 export ACKRC=".ackrc"
