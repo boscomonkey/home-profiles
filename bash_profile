@@ -46,3 +46,13 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
+
+# source credential file that should not be committed
+if [ -f .nocommit_credentials ]; then
+    source .nocommit_credentials
+fi
+
+# source profile file that should not be committed
+if [ -f .nocommit_profile ]; then
+    source .nocommit_profile
+fi
