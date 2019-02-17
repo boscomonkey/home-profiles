@@ -21,6 +21,10 @@ if [ -d "$HOME/Developer/android-sdk-macosx" ] ; then
     PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 fi
 
+# COMMENT FOR DEFAULT RUBY DEVELOPMENT
+# UNCOMMENT FOR DEFAULT PYTHON DEVELOPMENT
+# export ILOVEPYTHON="1"
+
 # Mac OSX Homebrew rate limiting - get token from github for homebrew
 # to avoid blowing rate limiting on brew searches
 ### export HOMEBREW_GITHUB_API_TOKEN=API_TOKEN
@@ -40,3 +44,18 @@ export RUBY_HEAP_SLOTS_INCREMENT=300000
 
 # read the .ackrc at each directory level instead of just ~
 export ACKRC=".ackrc"
+
+
+# set where virutal environments will live
+export WORKON_HOME=$HOME/.virtualenvs
+# ensure all new environments are isolated from the site-packages directory
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+# use the same directory for virtualenvs as virtualenvwrapper
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+# makes pip detect an active virtualenv and install to it
+export PIP_RESPECT_VIRTUALENV=true
+if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    echo "WARNING: Can't find virtualenvwrapper.sh"
+fi

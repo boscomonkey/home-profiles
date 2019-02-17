@@ -7,6 +7,7 @@ alias es_start='elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/confi
 alias excel='open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Excel.app '
 alias open_ports='lsof -i | grep LISTEN'
 alias sourcetree='open -a /Applications/SourceTree.app'
+alias sublime='open -a /Applications/Sublime\ Text\ 2.app'
 
 # These should work with any *nix
 #
