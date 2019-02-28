@@ -145,13 +145,6 @@ rb() {
     fi
 }
 
-# CONTROL DEFAULT LANGUAGE, see profile
-if [[ $ILOVERUBY ]] ; then
-    rb
-else
-    py
-fi
-
 # Add the following to your ~/.bashrc or ~/.zshrc
 hitch() {
     command hitch "$@"

@@ -21,10 +21,6 @@ if [ -d "$HOME/Developer/android-sdk-macosx" ] ; then
     PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 fi
 
-# COMMENT FOR DEFAULT RUBY DEVELOPMENT
-# UNCOMMENT FOR DEFAULT PYTHON DEVELOPMENT
-# export ILOVEPYTHON="1"
-
 # Mac OSX Homebrew rate limiting - get token from github for homebrew
 # to avoid blowing rate limiting on brew searches
 ### export HOMEBREW_GITHUB_API_TOKEN=API_TOKEN

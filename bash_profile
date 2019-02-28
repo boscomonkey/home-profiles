@@ -1,22 +1,11 @@
 #-*-shell-script-*-
 
-# whether a homebrew package has been installed; also returns false if
-# homebrew is not installed
-homebrew_has_installed () {
-    # error messages appear on STDERR; so pipe that to null to fail conditional
-    [ -n "$(brew --prefix $1 2>/dev/null)" ]
+# Function returns whether a homebrew package was installed
+#
+homebrew_was_installed () {
+    brew list | egrep "^${1}$" > /dev/null
 }
 
-# node version manager from homebrew
-if homebrew_has_installed nvm; then
-    export NVM_DIR=~/.nvm
-    . $(brew --prefix nvm)/nvm.sh
-fi
-
-# python version manager from homebrew
-if homebrew_has_installed pyenv; then
-  eval "$(pyenv init -)"
-fi
 
 # .bash_profile is for making sure that both the things in .profile and .bashrc are loaded
 # for login shells.
@@ -31,9 +20,20 @@ then
     source ~/.bashrc
 fi
 
-# if pyenv is installed, initialize it
-if command -v pyenv 1>/dev/null 2>&1; then
+# node version manager from homebrew
+if homebrew_was_installed nvm; then
+    export NVM_DIR=~/.nvm
+    . $(brew --prefix nvm)/nvm.sh
+fi
+
+# python version manager from homebrew
+if homebrew_was_installed pyenv; then
   eval "$(pyenv init -)"
+fi
+
+# pyenv's virtualenv plugin
+if homebrew_was_installed pyenv-virtualenv; then
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 GPG_AGENT_OUTPUT=~/.gnupg/.gpg-agent-info
@@ -44,9 +44,6 @@ else
     eval $(gpg-agent --daemon | tee $GPG_AGENT_OUTPUT)
 fi
 
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-
 # source credential file that should not be committed
 if [ -f .nocommit_credentials ]; then
     source .nocommit_credentials
@@ -55,4 +52,30 @@ fi
 # source profile file that should not be committed
 if [ -f .nocommit_profile ]; then
     source .nocommit_profile
+fi
+
+# default to python, ruby, or anaconda (set in .no_commit_profile)
+if [[ $I_LOVE_PYTHON ]] ; then
+    py
+elif [[ $I_LOVE_RUBY ]] ; then
+    rb
+elif [[ $I_LOVE_ANACONDA ]] ; then
+
+# added by Anaconda3 2018.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/boscoso/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/boscoso/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/boscoso/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/boscoso/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+
 fi
