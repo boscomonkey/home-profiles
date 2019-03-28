@@ -20,6 +20,9 @@ then
     source ~/.bashrc
 fi
 
+# brew doctor complained about /usr/local/sbin not being on path
+export PATH="/usr/local/sbin:$PATH"
+
 # node version manager from homebrew
 if homebrew_was_installed nvm; then
     export NVM_DIR=~/.nvm

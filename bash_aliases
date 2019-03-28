@@ -8,12 +8,13 @@ alias excel='open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Excel.app 
 alias open_ports='lsof -i | grep LISTEN'
 alias sourcetree='open -a /Applications/SourceTree.app'
 alias sublime='open -a /Applications/Sublime\ Text\ 2.app'
-alias marked='open -a /Applications/Marked.app'
+alias marked='open -a /Applications/Marked\ 2.app'
 alias sourcetree='open -a /Applications/Sourcetree.app'
 
 # These should work with any *nix
 #
 alias ack='ack --ignore-dir=coverage'
+alias ackp='ack --pager='\''less -r'\'''
 alias dss='diff --side-by-side'
 alias decode64='ruby -rbase64 -e '\''print Base64.decode64(File.open(ARGV[0]){|f| f.read})'\'''
 alias encode64='ruby -rbase64 -e '\''print Base64.encode64(File.open(ARGV[0]){|f| f.read})'\'''
@@ -24,7 +25,8 @@ alias path='ruby -e "puts ENV[\"PATH\"].gsub(/:/, \"\n\")"'
 alias pipclean="pip list | tabify | cut -f1 | egrep -v 'pip|setuptools|virtualenv|wheel|\bPackage\b|-------' | xargs pip uninstall --yes"
 alias pretty_json='ruby -r json -e '\''txt = ARGF.read; h = JSON.parse(txt); puts JSON.pretty_generate(h)'\'''
 alias psgrep='ps aux | grep -v grep | grep '
-alias python_simple_http_server='python -m SimpleHTTPServer'
+alias python2_simple_http_server='python -m SimpleHTTPServer'
+alias python_http_server='python3 -m http.server'
 alias rspecc='rspec --profile 0 --format documentation'
 alias tabify='ruby -pe '\''gsub(/ +/, "\t")'\'''
 
