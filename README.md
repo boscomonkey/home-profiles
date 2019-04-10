@@ -48,4 +48,4 @@ Since I use Aquamacs a lot, there are some features in this repo that supports i
 * `emacs` (after linking - `.emacs`) config file with my minimal customization
 * `aquamacs` alias to open a file in Aquamacs from the command line
 * _yaml-mode_ as a git submodule under `emacs.d/yaml-mode`. Run the following command (from the repo directory) to instantiate the directory:
-```gits submodule update --init --recursive```
+```git submodule update --init --recursive```
