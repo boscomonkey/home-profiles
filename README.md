@@ -40,3 +40,12 @@ or
 
     export I_LOVE_PYTHON=1
 
+
+#### Emacs ####
+
+Since I use Aquamacs a lot, there are some features in this repo that supports it:
+
+* `emacs` (after linking - `.emacs`) config file with my minimal customization
+* `aquamacs` alias to open a file in Aquamacs from the command line
+* _yaml-mode_ as a git submodule under `emacs.d/yaml-mode`. Run the following command (from the repo directory) to instantiate the directory:
+```git submodule update --init --recursive```
