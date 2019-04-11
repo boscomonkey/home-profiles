@@ -19,10 +19,10 @@ Also, don't forget to edit the [user] section of `gitconfig` to specify your def
 
 If you have credentials or profile settings that you don't want to inadvertently commit to the repo:
 
-* Create `~/.nocommit_credentials` and put credentials in there (e.g., AWS keys & IDs)
-* Create `~/.nocommit_profile` and put your aliases and variables in there.
+* Create `$HOME/.nocommit_credentials` and put credentials in there (e.g., AWS keys & IDs)
+* Create `$HOME/.nocommit_profile` and put your aliases and variables in there.
 
-`bash_profile` will detect these files and source them if found. `.gitignore` lists these files to provide an additional source of protection against committing to your git repo.
+`bash_profile` will detect these files and source them if found. They are not in the repo structure, thus lowering the risk of accidentally committing and pushing your credentials.
 
 
 #### Ruby or Python ####

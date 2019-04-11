@@ -48,13 +48,13 @@ else
 fi
 
 # source credential file that should not be committed
-if [ -f .nocommit_credentials ]; then
-    source .nocommit_credentials
+if [ -f $HOME/.nocommit_credentials ]; then
+    source $HOME/.nocommit_credentials
 fi
 
 # source profile file that should not be committed
-if [ -f .nocommit_profile ]; then
-    source .nocommit_profile
+if [ -f $HOME/.nocommit_profile ]; then
+    source $HOME/.nocommit_profile
 fi
 
 # default to python, ruby, or anaconda (set in .no_commit_profile)
