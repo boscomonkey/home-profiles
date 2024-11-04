@@ -3,7 +3,7 @@
 # Function returns whether a homebrew package was installed
 #
 homebrew_was_installed () {
-    brew list | egrep "^${1}$" > /dev/null
+    which brew && brew list | egrep "^${1}$" > /dev/null
 }
 
 
@@ -44,7 +44,7 @@ if [ -f $GPG_AGENT_OUTPUT ] && [ -n "$(pgrep gpg-agent)" ]; then
     source $GPG_AGENT_OUTPUT
 else
     # enable gpg-agent if it is not running; save its env vars
-    eval $(gpg-agent --daemon | tee $GPG_AGENT_OUTPUT)
+    which gpg-agent && eval $(gpg-agent --daemon | tee $GPG_AGENT_OUTPUT)
 fi
 
 # source credential file that should not be committed
