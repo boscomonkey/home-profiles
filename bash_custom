@@ -40,7 +40,7 @@ alias ack='ack --ignore-dir coverage --ignore-dir log --ignore-dir tmp --ignore-
 alias ackp="ack --pager='less -R'"
 alias curl_json='curl --header '\''Content-Type: application/json'\'' --request POST'
 alias decode64='ruby -rbase64 -e '\''print Base64.decode64(File.open(ARGV[0]){|f| f.read})'\'''
-alias dss='diff --side-by-side'
+alias dss='diff --side-by-side -W$(stty size | sed -r "s/^.* +//")'
 alias encode64='ruby -rbase64 -e '\''print Base64.encode64(File.open(ARGV[0]){|f| f.read})'\'''
 alias gshort='git rev-parse --short=7 HEAD'
 alias gshort_master='git rev-parse --short=7 master'
