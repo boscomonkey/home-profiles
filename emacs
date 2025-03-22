@@ -9,7 +9,6 @@
 ;; _____________________________________________________________________________
 (auto-fill-mode -1)
 (global-auto-revert-mode t)
-(global-smart-spacing-mode nil)
 (global-visual-line-mode nil)
 (remove-hook 'html-helper-mode-hook 'auto-detect-wrap)
 (remove-hook 'html-mode-hook #'turn-on-auto-fill)
